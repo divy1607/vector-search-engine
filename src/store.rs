@@ -1,7 +1,7 @@
 pub struct Store {
-    dim: usize,
-    data: Vec<(u64, Vec<f32>)>,
-    next_id: u64,
+    pub dim: usize,
+    pub data: Vec<(u64, Vec<f32>)>,
+    pub next_id: u64,
 }
 
 impl Store {
@@ -15,6 +15,14 @@ impl Store {
 
     pub fn len(&self) -> usize {
         self.data.len()
+    }
+
+    pub fn dim(&self) -> usize {
+        self.dim
+    }
+
+    pub fn iter(&self) -> std::slice::Iter<'_, (u64, Vec<f32>)> {
+        self.data.iter()
     }
 
     pub fn insert(&mut self, vec: Vec<f32>) -> Result<u64, String> {
@@ -32,3 +40,4 @@ impl Store {
         Ok(id)
     }
 }
+

@@ -29,3 +29,33 @@ pub fn cosine_similarity(q: &[f32], v: &[f32]) -> f32 {
     let cosine: f32 = num / den;
     return cosine;
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_cosine_identical() {
+        assert_eq!(cosine_similarity(&[1.0, 0.0], &[1.0, 0.0]), 1.0);
+    }
+
+    #[test]
+    fn test_cosine_orthogonal() {
+        assert_eq!(cosine_similarity(&[1.0, 0.0], &[0.0, 1.0]), 0.0);
+    }
+
+    #[test]
+    fn test_cosine_opposite() {
+        assert_eq!(cosine_similarity(&[1.0, 0.0], &[-1.0, 0.0]), -1.0);
+    }
+
+    #[test]
+    fn test_cosine_zero() {
+        assert_eq!(cosine_similarity(&[23.0, 56.2], &[0.0, 0.0]), 0.0);
+    }
+
+    #[test]
+    fn test_l2() {
+        assert_eq!(squared_l2_distance(&[0.0, 0.0], &[3.0, 4.0]), 25.0);
+    }
+}
