@@ -1,6 +1,7 @@
+use crate::hnsw::Node;
 pub struct Store {
     pub dim: usize,
-    pub data: Vec<(u64, Vec<f32>)>,
+    pub data: Vec<Node>,
     pub next_id: u64,
 }
 
@@ -21,23 +22,23 @@ impl Store {
         self.dim
     }
 
-    pub fn iter(&self) -> std::slice::Iter<'_, (u64, Vec<f32>)> {
-        self.data.iter()
-    }
+    // pub fn iter(&self) -> std::slice::Iter<'_, (u64, Vec<f32>)> {
+    //     self.data.iter()
+    // }
 
-    pub fn insert(&mut self, vec: Vec<f32>) -> Result<u64, String> {
-        if self.data.is_empty() {
-            self.dim = vec.len();
-        } else {
-            if vec.len() != self.dim {
-                return Err("dimension mismatch".to_string());
-            }
-        }
-        let id = self.next_id;
-        self.next_id += 1;
-        self.data.push((id, vec));
+    // pub fn insert(&mut self, vec: Vec<f32>) -> Result<u64, String> {
+    //     if self.data.is_empty() {
+    //         self.dim = vec.len();
+    //     } else {
+    //         if vec.len() != self.dim {
+    //             return Err("dimension mismatch".to_string());
+    //         }
+    //     }
+    //     let id = self.next_id;
+    //     self.next_id += 1;
+    //     self.data.push((id, vec));
 
-        Ok(id)
-    }
+    //     Ok(id)
+    // }
 }
 
