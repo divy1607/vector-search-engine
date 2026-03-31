@@ -1,14 +1,14 @@
 use crate::hnsw::Node;
 pub struct Store {
-    pub dim: usize,
-    pub data: Vec<Node>,
-    pub next_id: u64,
+    pub nodes: Vec<Node>,
+    pub entry_point: Option<usize>,
+    pub max_level: usize,
 }
 
 impl Store {
     pub fn new() -> Store {
         Store {
-            dim: 0,
+            nodes: Vec::new(),
             data: Vec::new(),
             next_id: 0,
         }
@@ -26,19 +26,8 @@ impl Store {
     //     self.data.iter()
     // }
 
-    // pub fn insert(&mut self, vec: Vec<f32>) -> Result<u64, String> {
-    //     if self.data.is_empty() {
-    //         self.dim = vec.len();
-    //     } else {
-    //         if vec.len() != self.dim {
-    //             return Err("dimension mismatch".to_string());
-    //         }
-    //     }
-    //     let id = self.next_id;
-    //     self.next_id += 1;
-    //     self.data.push((id, vec));
+    pub fn insert(&self, vector: Vec<f32>) {
 
-    //     Ok(id)
-    // }
+    }
 }
 
