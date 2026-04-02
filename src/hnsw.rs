@@ -1,9 +1,10 @@
 use rand::Rng;
+
 pub struct Node {
-    id: u64,
-    vector: Vec<f32>,
-    level: usize,
-    neighbors: Vec<Vec<usize>>,
+    pub id: u64,
+    pub vector: Vec<f32>,
+    pub level: usize,
+    pub neighbors: Vec<Vec<usize>>,
 }
 
 pub fn hnsw() {}
