@@ -1,3 +1,5 @@
+// distance.rs
+
 pub fn squared_l2_distance(q: &[f32], v: &[f32]) -> f32 {
     assert_eq!(q.len(), v.len());
     let n = q.len();
